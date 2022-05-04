@@ -1,0 +1,20 @@
+{
+  "name": "app-loja",
+  "version": "1.0.0",
+  "description": "Aplicação de loja virtual com controle de acesso",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "Vitor Martins Diorio",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
+}
