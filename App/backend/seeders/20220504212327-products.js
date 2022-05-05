@@ -19,7 +19,7 @@ module.exports = {
       description: 'Leve esse animal selvagem para sua casa! Jaula não inclusa!',
       imageURL: 'https://vejasp.abril.com.br/wp-content/uploads/2018/07/capa3.jpg',
       price: 50,
-      category: 'animais',
+      category: 'animals',
       quantity: 1996,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -30,7 +30,7 @@ module.exports = {
       description: 'Entupa todas suas artérias, ou morra tentando!',
       imageURL: 'https://vejasp.abril.com.br/wp-content/uploads/2016/12/ezequiel.jpeg?quality=70&strip=all&strip=info',
       price: 50,
-      category: 'comida',
+      category: 'food',
       quantity: 621,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -52,7 +52,7 @@ module.exports = {
       description: 'Eu morava numa ilha e me mudei pra outra, isso não foi um trocadilho, foi uma trocadilha',
       imageURL: 'https://www.opovo.com.br/esportesimages/app/noticia_14970375377/2018/07/05/29548/Psicoxinha.jpg',
       price: 50,
-      category: 'comida',
+      category: 'food',
       quantity: 621,
       createdAt: new Date(),
       updatedAt: new Date()
