@@ -33,4 +33,10 @@ export default class ProductsService {
     const product = await services.products.updateProduct(id, newProduct);
     return res.status(StatusCodes.OK).json(product);
   };
+
+  static deleteProduct = async (req: Request, res: Response) => {
+    const { id } = req.params
+    const product = await services.products.deleteProduct(id);
+    return res.status(StatusCodes.NO_CONTENT).end();
+  };
 };
