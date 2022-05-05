@@ -1,5 +1,6 @@
 import IProduct from "../interface/IProduct";
 import Product from "../../models/product";
+import { Optional } from "sequelize/types";
 
 export default class ProductsService {
   static getAll = async () => {
@@ -25,13 +26,13 @@ export default class ProductsService {
     return quantity;
   };
 
-  static updateProduct = async (id: string, prod: IProduct) => {
-    const product = await Product.findByPk(id) as Product;
-    await product.update({prod});
+  static updateProduct = async (id: string, values: IProduct) => {
+    const product = await Product.update(values, { where: { id } });
+    return product
   };
 
-  static createProduct = async (prod: IProduct) => {
-    const product = await Product.create({prod});
+  static createProduct = async (values: Optional<any, string>) => {
+    const product = await Product.create(values)
     return product;
   };
 
