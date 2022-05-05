@@ -11,12 +11,19 @@ export default class ProductsService {
   static getById = async (req: Request, res: Response) => {
     const { id } = req.params;
     const product = await services.products.getById(id);
+    if (!product) return res.status(StatusCodes.NOT_FOUND).json({ message: 'Product not found' });
     return res.status(StatusCodes.OK).json(product);
   };
 
   static getByCategory = async (req: Request, res: Response) => {
     const { category } = req.body
     const products = await services.products.getByCategory(category);
-    return products;
+    return res.status(200).json(products);
+  };
+
+  static createProduct = async (req: Request, res: Response) => {
+    const newProduct = req.body
+    const product = await services.products.createProduct(newProduct);
+    return res.status(200).json(product);
   };
 };
