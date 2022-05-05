@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import middlewares from '../middlewares';
 
 import controllers from '../controllers';
 
@@ -19,9 +20,16 @@ productRouter.get(
   controllers.product.getById,
 )
 
-productRouter.post(
+productRouter.put(
   '/:id',
+  middlewares.products.validateUpdateProduct,
   controllers.product.updateProduct,
+)
+
+productRouter.post(
+  '/',
+  middlewares.products.validateNewProduct,
+  controllers.product.createProduct,
 )
 
 productRouter.delete(
