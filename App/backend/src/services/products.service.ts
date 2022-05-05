@@ -1,3 +1,4 @@
+import IProduct from "../interface/IProduct";
 import Product from "../../models/product";
 
 export default class ProductsService {
@@ -22,5 +23,10 @@ export default class ProductsService {
     if (!product || quantity < 0) return -999
     product.update({quantity});
     return quantity;
+  };
+
+  static updateProduct = async (id: string, prod: IProduct) => {
+    const product = await Product.findByPk(id) as Product;
+    await product.update({prod});
   };
 };
