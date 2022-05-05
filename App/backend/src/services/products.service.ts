@@ -15,4 +15,12 @@ export default class ProductsService {
     const product = await Product.findAll({ where: { category } }) as Product[];
     return product;
   };
+  
+  static updateQuantity = async (id: string, amount: number, replace: boolean = false) => {
+    const product = await Product.findByPk(id) as Product;
+    const quantity = replace ? amount : (product.quantity + amount);
+    if (!product || quantity < 0) return -999
+    product.update({quantity});
+    return quantity;
+  };
 };
