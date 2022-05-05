@@ -13,4 +13,10 @@ export default class ProductsService {
     const product = await services.products.getById(id);
     return res.status(StatusCodes.OK).json(product);
   };
+
+  static getByCategory = async (req: Request, res: Response) => {
+    const { category } = req.body
+    const products = await services.products.getByCategory(category);
+    return products;
+  };
 };
