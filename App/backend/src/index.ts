@@ -9,6 +9,7 @@ const { PORT } = process.env
 
 app.use(bodyParser.json());
 app.use('/products', router.products)
+app.use('/users', router.users)
 
 app.listen(PORT);
 console.log(`listening on port: ${PORT}`)
