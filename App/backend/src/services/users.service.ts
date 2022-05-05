@@ -5,24 +5,27 @@ import * as bcrypt from 'bcryptjs';
 
 export default class UserService {
   static getAll = async () => {
-    const users = await User.findAll() as User[];
+    const users = await User.findAll({ attributes: { exclude: ['id', 'password'] } }) as User[];
     return users;
   };
   
   static getById = async (id: string) => {
-    const user = await User.findByPk(id) as User;
+    const user = await User.findByPk(id, { attributes: { exclude: ['id', 'password'] } }) as User;
     return user;
   };
   
   static getByRole = async (role: string) => {
-    const users = await User.findAll({ where: { role } }) as User[];
+    const users = await User.findAll({ where: { role }, attributes: { exclude: ['id', 'password'] } }) as User[];
     return users;
   };
 
-  static updatePassword = async (id: string, password: string) => {
-    bcrypt.hashSync(password, 8)
-    const product = await User.update({ password }, { where: { id } });
-    return product
+  static updateCoins = async (id: string, amount: number, replace: boolean = false) => {
+    const user = await User.findByPk(id);
+    if (!user) return '404*User not found';
+    const coins = replace ? amount : user.coins + amount;
+    if (coins < 0) return '401*Invalid amount'
+    await User.update({ coins }, { where: { id } });
+    return '200*Coins updated';
   };
 
   static createUser = async (user: Optional<any, string>) => {
