@@ -5,7 +5,7 @@ import controllers from '../controllers';
 
 const loginRouter = Router();
 
-loginRouter.get(
+loginRouter.post(
   '/',
   middlewares.login.validateRequest,
   controllers.login.main,
