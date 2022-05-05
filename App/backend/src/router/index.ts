@@ -1,5 +1,7 @@
-import products from './products.route'
+import products from './products.route';
+import users from './users.route';
 
 export default {
-  products
+  products,
+  users,
 }
