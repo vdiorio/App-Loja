@@ -7,4 +7,10 @@ export default class ProductsService {
     const products = await services.products.getAll();
     return res.status(StatusCodes.OK).json(products);
   };
+
+  static getById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const product = await services.products.getById(id);
+    return res.status(StatusCodes.OK).json(product);
+  };
 };
