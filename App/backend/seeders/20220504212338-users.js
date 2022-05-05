@@ -9,6 +9,8 @@ module.exports = {
       password: 'TROCAR POR CHAVE',
       role: 'admin',
       coins: 9999,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       id: 2,
@@ -17,6 +19,9 @@ module.exports = {
       password: 'TROCAR POR CHAVE',
       role: 'user',
       coins: 100,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      
     },
     {
       id: 3,
@@ -25,6 +30,8 @@ module.exports = {
       password: 'TROCAR POR CHAVE',
       role: 'user',
       coins: 500,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       id: 4,
@@ -33,6 +40,8 @@ module.exports = {
       password: 'TROCAR POR CHAVE',
       role: 'user',
       coins: 0,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }])
   },
 

@@ -8,8 +8,10 @@ module.exports = {
       description: 'A faca GINSU 2000 corta peixes, costela na vertical, cano de metal e tomates!',
       imageURL: 'https://teleguiado.com/wp-content/uploads/2016/06/Sem-t%C3%ADtulo.png',
       price: 150,
-      category: 'utensils',
-      quantity: 2000
+      category: 'utensilhos',
+      quantity: 2000,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       id: 2,
@@ -18,7 +20,9 @@ module.exports = {
       imageURL: 'https://vejasp.abril.com.br/wp-content/uploads/2018/07/capa3.jpg',
       price: 50,
       category: 'animais',
-      quantity: 1996
+      quantity: 1996,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       id: 3,
@@ -27,7 +31,9 @@ module.exports = {
       imageURL: 'https://vejasp.abril.com.br/wp-content/uploads/2016/12/ezequiel.jpeg?quality=70&strip=all&strip=info',
       price: 50,
       category: 'comida',
-      quantity: 621
+      quantity: 621,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       id: 4,
@@ -36,7 +42,9 @@ module.exports = {
       imageURL: 'https://e7.pngegg.com/pngimages/110/134/png-clipart-boston-terrier-jojo-s-bizarre-adventure-iggy-stardust-crusaders-puppy-puppy.png',
       price: 2,
       category: 'animals',
-      quantity: 1
+      quantity: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       id: 5,
@@ -45,7 +53,9 @@ module.exports = {
       imageURL: 'https://www.opovo.com.br/esportesimages/app/noticia_14970375377/2018/07/05/29548/Psicoxinha.jpg',
       price: 50,
       category: 'comida',
-      quantity: 621
+      quantity: 621,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }])
   },
 

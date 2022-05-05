@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       coins: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       role: {
         type: Sequelize.STRING
