@@ -22,18 +22,21 @@ productRouter.get(
 
 productRouter.put(
   '/:id',
+  middlewares.validation.admin,
   middlewares.products.validateUpdateProduct,
   controllers.product.updateProduct,
 )
 
 productRouter.post(
   '/',
+  middlewares.validation.admin,
   middlewares.products.validateNewProduct,
   controllers.product.createProduct,
 )
 
 productRouter.delete(
   '/:id',
+  middlewares.validation.admin,
   controllers.product.deleteProduct,
 )
 
