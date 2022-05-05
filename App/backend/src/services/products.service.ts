@@ -34,4 +34,8 @@ export default class ProductsService {
     const product = await Product.create({prod});
     return product;
   };
+
+  static deleteProduct = async (id: string) => {
+    await Product.destroy({ where: { id } });
+  };
 };
