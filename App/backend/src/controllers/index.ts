@@ -1,5 +1,7 @@
-import product from './products.controller'
+import product from './products.controller';
+import user from './users.controller';
 
 export default {
   product,
+  user,
 }

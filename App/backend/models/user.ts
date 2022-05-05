@@ -37,10 +37,12 @@ User.init({
   coins: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    defaultValue: 0
   },
   role: {
     type: DataTypes.STRING,
     allowNull: false,
+    defaultValue: 'user'
   },
 }, {
   sequelize: db,
