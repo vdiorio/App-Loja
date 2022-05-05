@@ -47,8 +47,8 @@ export default class ProductsService {
     try {
       const newProduct = req.body
       const { id } = req.params
-      const product = await services.products.updateProduct(id, newProduct);
-      return res.status(StatusCodes.OK).json(product);
+      await services.products.updateProduct(id, newProduct);
+      return res.status(StatusCodes.OK).end();
     } catch (e) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
     }
@@ -57,7 +57,7 @@ export default class ProductsService {
   static deleteProduct = async (req: Request, res: Response) => {
     try {
       const { id } = req.params
-      const product = await services.products.deleteProduct(id);
+      await services.products.deleteProduct(id);
       return res.status(StatusCodes.NO_CONTENT).end();
     } catch (e) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
