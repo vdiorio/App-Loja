@@ -36,7 +36,7 @@ export default class UserService {
 
   static authenticateUser = async (user: Optional<any, string>) => {
     const { email, password } = user
-    const foundUser = await User.findOne({ where: { email } });
+    const foundUser = await User.findOne({ where: { email }, attributes: { exclude: ['password'] } });
     if (bcrypt.compareSync(password, user.password)) return foundUser;
     return null;
   };
