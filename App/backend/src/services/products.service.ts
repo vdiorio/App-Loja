@@ -29,4 +29,9 @@ export default class ProductsService {
     const product = await Product.findByPk(id) as Product;
     await product.update({prod});
   };
+
+  static createProduct = async (prod: IProduct) => {
+    const product = await Product.create({prod});
+    return product;
+  };
 };
