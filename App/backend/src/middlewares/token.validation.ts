@@ -6,21 +6,29 @@ require('dotenv').config();
 export default class TokenValidation {
 
   static admin = (req: Request, res: Response, next: NextFunction) => {
-    const { authorization } = req.headers;
-    if (!authorization) return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token not found' })
-    const { role } = jwt.verify(authorization, process.env.JWT_SECRET as string) as jwt.JwtPayload;;
-    if (role !== 'admin') return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Unauthorized action' });
-    next();
+    try {
+      const { authorization } = req.headers;
+      if (!authorization) return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token not found' })
+      const { role } = jwt.verify(authorization, process.env.JWT_SECRET as string) as jwt.JwtPayload;;
+      if (role !== 'admin') return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Unauthorized action' });
+      next();
+    } catch (e) {
+      return res.status(401).json({ message: 'Invalid token' })
+    }
   }
   
   static user = (req: Request, res: Response, next: NextFunction) => {
-    const { authorization } = req.headers;
-    if (!authorization) return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token not found' })
-    const { role, id } = jwt.verify(authorization, process.env.JWT_SECRET as string) as jwt.JwtPayload;
-    if (role !== 'user' || role !== 'admin') {
+    try {
+      const { authorization } = req.headers;
+      if (!authorization) return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token not found' })
+      const { role, id } = jwt.verify(authorization, process.env.JWT_SECRET as string) as jwt.JwtPayload;
+      if (role !== 'user' || role !== 'admin') {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Unauthorized action' });
+      }
+      req.body.userId = id;
+      next();
+    } catch (e) {
       return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Unauthorized action' });
     }
-    req.body.id = id;
-    next();
   }
 }
