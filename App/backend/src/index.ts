@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use('/products', router.products)
 app.use('/users', router.users)
 app.use('/login', router.login)
+app.use('/orders', router.orders)
 
 app.listen(PORT);
 console.log(`listening on port: ${PORT}`)
