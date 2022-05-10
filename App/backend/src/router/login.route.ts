@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import middlewares from '../middlewares';
 
 import controllers from '../controllers';
@@ -6,9 +6,9 @@ import controllers from '../controllers';
 const loginRouter = Router();
 
 loginRouter.post(
-  '/',
-  middlewares.login.validateRequest,
-  controllers.login.main,
+    '/',
+    middlewares.login.validateRequest,
+    controllers.login.main,
 );
 
 

@@ -10,4 +10,4 @@ export default {
   login,
   validation,
   order,
-}
+};

@@ -1,6 +1,6 @@
-import services from "../services";
-import StatusCodes from "http-status-codes"
-import { Request, Response } from "express";
+import services from '../services';
+import StatusCodes from 'http-status-codes';
+import {Request, Response} from 'express';
 
 export default class ProductsService {
   static getAll = async (_req: Request, res: Response) => {
@@ -14,9 +14,9 @@ export default class ProductsService {
 
   static getById = async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
+      const {id} = req.params;
       const product = await services.products.getById(id);
-      if (!product) return res.status(StatusCodes.NOT_FOUND).json({ message: 'Product not found' });
+      if (!product) return res.status(StatusCodes.NOT_FOUND).json({message: 'Product not found'});
       return res.status(StatusCodes.OK).json(product);
     } catch (e) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
@@ -25,7 +25,7 @@ export default class ProductsService {
 
   static getByCategory = async (req: Request, res: Response) => {
     try {
-      const { category } = req.body
+      const {category} = req.body;
       const products = await services.products.getByCategory(category);
       return res.status(StatusCodes.OK).json(products);
     } catch (e) {
@@ -35,7 +35,7 @@ export default class ProductsService {
 
   static createProduct = async (req: Request, res: Response) => {
     try {
-      const newProduct = req.body
+      const newProduct = req.body;
       const product = await services.products.createProduct(newProduct);
       return res.status(StatusCodes.CREATED).json(product);
     } catch (e) {
@@ -45,8 +45,8 @@ export default class ProductsService {
 
   static updateProduct = async (req: Request, res: Response) => {
     try {
-      const newProduct = req.body
-      const { id } = req.params
+      const newProduct = req.body;
+      const {id} = req.params;
       await services.products.updateProduct(id, newProduct);
       return res.status(StatusCodes.OK).end();
     } catch (e) {
@@ -56,7 +56,7 @@ export default class ProductsService {
 
   static deleteProduct = async (req: Request, res: Response) => {
     try {
-      const { id } = req.params
+      const {id} = req.params;
       await services.products.deleteProduct(id);
       return res.status(StatusCodes.NO_CONTENT).end();
     } catch (e) {

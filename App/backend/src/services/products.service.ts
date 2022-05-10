@@ -1,42 +1,42 @@
-import IProduct from "../interface/IProduct";
-import Product from "../../models/product";
-import { Optional } from "sequelize/types";
+import IProduct from '../interface/IProduct';
+import Product from '../../models/product';
+import {Optional} from 'sequelize/types';
 
 export default class ProductsService {
   static getAll = async () => {
     const products = await Product.findAll() as Product[];
     return products;
   };
-  
+
   static getById = async (id: string) => {
     const product = await Product.findByPk(id) as Product;
     return product;
   };
-  
+
   static getByCategory = async (category: string) => {
-    const product = await Product.findAll({ where: { category } }) as Product[];
+    const product = await Product.findAll({where: {category}}) as Product[];
     return product;
   };
-  
+
   static updateQuantity = async (id: string, amount: number, replace: boolean = false) => {
     const product = await Product.findByPk(id) as Product;
     const quantity = replace ? amount : (product.quantity + amount);
-    if (!product || quantity < 0) return -999
+    if (!product || quantity < 0) return -999;
     product.update({quantity});
     return quantity;
   };
 
   static updateProduct = async (id: string, values: IProduct) => {
-    const product = await Product.update(values, { where: { id } });
-    return product
+    const product = await Product.update(values, {where: {id}});
+    return product;
   };
 
   static createProduct = async (values: Optional<any, string>) => {
-    const product = await Product.create(values)
+    const product = await Product.create(values);
     return product;
   };
 
   static deleteProduct = async (id: string) => {
-    await Product.destroy({ where: { id } });
+    await Product.destroy({where: {id}});
   };
 };

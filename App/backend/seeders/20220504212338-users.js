@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Users', [{
       id: 1,
       name: 'Administrador',
@@ -10,7 +10,7 @@ module.exports = {
       role: 'admin',
       coins: 9999,
       created_at: new Date(),
-      updated_at: new Date()
+      updated_at: new Date(),
     },
     {
       id: 2,
@@ -20,8 +20,8 @@ module.exports = {
       role: 'user',
       coins: 100,
       created_at: new Date(),
-      updated_at: new Date()
-      
+      updated_at: new Date(),
+
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ module.exports = {
       role: 'user',
       coins: 500,
       created_at: new Date(),
-      updated_at: new Date()
+      updated_at: new Date(),
     },
     {
       id: 4,
@@ -41,11 +41,11 @@ module.exports = {
       role: 'user',
       coins: 0,
       created_at: new Date(),
-      updated_at: new Date()
-    }])
+      updated_at: new Date(),
+    }]);
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Users', null, {})
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Users', null, {});
+  },
 };

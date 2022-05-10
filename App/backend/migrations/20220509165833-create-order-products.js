@@ -5,23 +5,23 @@ module.exports = {
       order_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        references: { model: 'Orders' , key: 'id' },
-        onDelete: 'CASCADE'
+        references: {model: 'Orders', key: 'id'},
+        onDelete: 'CASCADE',
       },
       product_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        references: { model: 'Products', key: 'id' },
-        onDelete: 'CASCADE'
+        references: {model: 'Products', key: 'id'},
+        onDelete: 'CASCADE',
       },
       quantity: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 1
-      }
+        defaultValue: 1,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Order_Products');
-  }
+  },
 };

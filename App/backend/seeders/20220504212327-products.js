@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Products', [{
       id: 1,
       name: 'FACA GINSU 2000',
@@ -11,7 +11,7 @@ module.exports = {
       category: 'utensilhos',
       quantity: 2000,
       created_at: new Date(),
-      updated_at: new Date()
+      updated_at: new Date(),
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ module.exports = {
       category: 'animals',
       quantity: 1996,
       created_at: new Date(),
-      updated_at: new Date()
+      updated_at: new Date(),
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ module.exports = {
       category: 'food',
       quantity: 621,
       created_at: new Date(),
-      updated_at: new Date()
+      updated_at: new Date(),
     },
     {
       id: 4,
@@ -44,7 +44,7 @@ module.exports = {
       category: 'animals',
       quantity: 1,
       created_at: new Date(),
-      updated_at: new Date()
+      updated_at: new Date(),
     },
     {
       id: 5,
@@ -55,11 +55,11 @@ module.exports = {
       category: 'food',
       quantity: 621,
       created_at: new Date(),
-      updated_at: new Date()
-    }])
+      updated_at: new Date(),
+    }]);
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Products', null, {})
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Products', null, {});
+  },
 };

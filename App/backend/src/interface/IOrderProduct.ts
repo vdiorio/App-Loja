@@ -1,4 +1,6 @@
-export default interface IOrderProduct {
+interface IOrderProduct {
   productId: number,
   quantity: number,
-}
+};
+
+export default IOrderProduct;
