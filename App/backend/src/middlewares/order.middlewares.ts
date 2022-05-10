@@ -17,17 +17,27 @@ export default class OrderMiddlewares {
     }
     next();
   }
-
   
   static validateProducts = async (req: Request, res: Response, next: NextFunction) => {
     const products = req.body;
+    let totalPrice = 0;
     for ( const p of products ) {
       const product = await services.products.getById(p.productId);
       if (!product) return res.status(StatusCodes.NOT_FOUND).json({ message: 'Product not found' })
       if (product.quantity - p.quantity < 0) {
         return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'No products enough in stock' })
       }
+      totalPrice += product.price;
     }
+    req.headers.price = totalPrice.toString()
+    next();
+  }
+
+  static validateCoins = async (req: Request, res: Response, next: NextFunction) => {
+    const price = Number(req.headers.price);
+    const { id } = req.headers
+    const { coins } = await services.users.getById(id as string);
+    if (coins - price < 0) return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Not enough funds' })
     next();
   }
 }

@@ -53,6 +53,7 @@ Product.init({
   modelName: 'Product',
   tableName: 'Products',
   timestamps: true,
+  underscored: true
 });
 
 export default Product;
