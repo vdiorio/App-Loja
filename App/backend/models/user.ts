@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '.';
+import Order from './orders';
 
 class User extends Model {
   public id: number;
@@ -47,7 +48,12 @@ User.init({
 }, {
   sequelize: db,
   modelName: 'User',
+  tableName: 'Users',
   timestamps: true,
+  underscored: true,
 });
+
+User.hasMany(Order, { foreignKey: 'userId', as: 'orders' });
+Order.belongsTo(User);
 
 export default User;

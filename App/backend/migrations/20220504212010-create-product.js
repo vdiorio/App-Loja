@@ -14,7 +14,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      imageURL: {
+      image_u_r_l: {
         type: Sequelize.STRING
       },
       price: {
@@ -26,11 +26,11 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
