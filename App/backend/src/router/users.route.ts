@@ -18,6 +18,7 @@ userRouter.post(
 
 userRouter.put(
     '/:id',
+    middlewares.validation.admin,
     middlewares.users.validateCoins,
     controllers.user.updateCoins,
 );
