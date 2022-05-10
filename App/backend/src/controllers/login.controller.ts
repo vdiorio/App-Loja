@@ -14,6 +14,7 @@ export default class ProductsService {
     const user = await services.users.authenticateUser(req.body);      
     if (!user) return res.status(404).json({ message: 'Wrong email or password' });
     const data = {
+      id: user.id,
       email: user.email,
       role: user.role
     }
