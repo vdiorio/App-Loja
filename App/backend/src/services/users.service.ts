@@ -13,11 +13,6 @@ export default class UserService {
     return user;
   };
 
-  static getByRole = async (role: string) => {
-    const users = await User.findAll({where: {role}, attributes: {exclude: ['id', 'password']}}) as User[];
-    return users;
-  };
-
   static updateCoins = async (id: string, amount: number, replace: boolean = false) => {
     const user = await User.findByPk(id);
     if (!user) return '404*User not found';

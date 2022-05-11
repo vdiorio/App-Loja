@@ -8,7 +8,7 @@ export default class UsersController {
       const users = await services.users.getAll();
       return res.status(StatusCodes.OK).json(users);
     } catch (e) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message: 'Algo deu errado, tente novamente mais tarde'});
     }
   };
 
