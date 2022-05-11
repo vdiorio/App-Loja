@@ -8,6 +8,7 @@ import {StatusCodes} from 'http-status-codes';
 import User from '../models/user';
 import {before} from 'mocha';
 import * as jwt from 'jsonwebtoken';
+import {usersFindAllStub} from './lib';
 require('dotenv').config();
 
 chai.use(chaiHttp);
@@ -152,5 +153,72 @@ describe('Não pode ser possível criar um usuário com uma requisição inváli
     expect(response).to.have.status(StatusCodes.BAD_REQUEST);
     expect(response.body).to.have.property('message');
     expect(response.body.message).to.be.equal('"password" length must be at least 6 characters long');
+  });
+});
+
+describe('A rota users deve retornar todos os usuários do banco', () => {
+  before(() => {
+    sinon.stub(User, 'findAll').resolves(usersFindAllStub as unknown as User[]);
+    sinon.stub(jwt, 'verify').returns({role: 'admin'} as unknown as void);
+  });
+  after(() => {
+    (User.findAll as sinon.SinonStub).restore();
+    (jwt.verify as sinon.SinonStub).restore();
+  });
+
+  it('Deve retornar o status 200 e uma lista com todos os usuários do banco', async () => {
+    const response = await chai.request(app)
+        .get('/users')
+        .set('authorization', 'token');
+    expect(response).to.have.status(200);
+    expect(response.body).to.be.an('array');
+    response.body.forEach((user: User) => {
+      expect(user).to.have.property('name');
+      expect(user).to.have.property('email');
+      expect(user).to.have.property('coins');
+      expect(user).to.have.property('role');
+      expect(user).to.have.property('createdAt');
+      expect(user).to.have.property('updatedAt');
+    });
+  });
+});
+
+describe('Caso algo de errado a requisição deve retornar um erro', () => {
+  before(() => {
+    sinon.stub(User, 'create').rejects();
+    sinon.stub(User, 'findAll').rejects();
+    sinon.stub(User, 'update').rejects();
+    sinon.stub(jwt, 'verify').returns({role: 'admin'} as unknown as void);
+  });
+
+  after(() => {
+    (User.create as sinon.SinonStub).restore();
+    (User.findAll as sinon.SinonStub).restore();
+    (User.update as sinon.SinonStub).restore();
+    (jwt.verify as sinon.SinonStub).restore();
+  });
+
+  const request = {
+    name: 'Marquito Soares',
+    email: 'marquito@gmail.com',
+    password: 'senhadomarquito',
+  };
+
+  it('A rota GET /users deve retornar status 500', async () => {
+    const response = await chai.request(app).get('/users').set('authorization', 'token');
+    expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
+  });
+
+  it('A rota POST /users/create deve retornar status 500', async () => {
+    const response = await chai.request(app).post('/users/create').set('authorization', 'token').send(request);
+    expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
+  });
+
+  it('A rota PUT /users deve retornar status 500', async () => {
+    const response = await chai.request(app).put('/users/1').set('authorization', 'token').send({coins: 10});
+    expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
   });
 });

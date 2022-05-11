@@ -117,3 +117,24 @@ describe('Deve retornar um token JWT caso tudo esteja OK', () => {
     expect(decoded).to.have.property('iat');
   });
 });
+
+describe('Caso algo de errado a requisição deve retornar um erro', () => {
+  before(() => {
+    sinon.stub(User, 'findOne').rejects();
+    sinon.stub(jwt, 'verify').returns({role: 'admin'} as unknown as void);
+  });
+
+  after(() => {
+    (User.findOne as sinon.SinonStub).restore();
+    (jwt.verify as sinon.SinonStub).restore();
+  });
+
+  it('A rota POST /login deve retornar status 500', async () => {
+    const response = await chai.request(app).post('/login').send({
+      email: 'valid@email.com',
+      password: 'valid_password',
+    });
+    expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
+  });
+});
