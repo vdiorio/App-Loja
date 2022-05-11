@@ -7,6 +7,7 @@ const userRouter = Router();
 
 userRouter.get(
     '/',
+    middlewares.validation.admin,
     controllers.user.getAll,
 );
 

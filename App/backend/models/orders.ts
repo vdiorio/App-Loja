@@ -1,7 +1,5 @@
-import { DataTypes, Model } from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import db from '.';
-import Product from './product';
-import User from './user';
 
 class Order extends Model {
   public id: number;
@@ -16,12 +14,12 @@ Order.init({
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  }
+  },
 }, {
   sequelize: db,
   modelName: 'Order',

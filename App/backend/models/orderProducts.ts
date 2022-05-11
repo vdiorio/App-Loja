@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import db from '.';
 import Order from './orders';
 import Product from './product';
@@ -21,10 +21,10 @@ OrderProducts.init({
   modelName: 'Order_Products',
   tableName: 'Order_Products',
   timestamps: false,
-  underscored: true
+  underscored: true,
 });
 
-Order.belongsToMany(Product, { through: OrderProducts, foreignKey: 'order_id', as: 'products'  });
-Product.belongsToMany(Order, { through: OrderProducts, foreignKey: 'product_id' });
+Order.belongsToMany(Product, {through: OrderProducts, foreignKey: 'order_id', as: 'products'});
+Product.belongsToMany(Order, {through: OrderProducts, foreignKey: 'product_id'});
 
 export default OrderProducts;

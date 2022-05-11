@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import db from '.';
 import Order from './orders';
 
@@ -38,12 +38,12 @@ User.init({
   coins: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    defaultValue: 0
+    defaultValue: 0,
   },
   role: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'user'
+    defaultValue: 'user',
   },
 }, {
   sequelize: db,
@@ -53,7 +53,7 @@ User.init({
   underscored: true,
 });
 
-User.hasMany(Order, { foreignKey: 'userId', as: 'orders' });
+User.hasMany(Order, {foreignKey: 'userId', as: 'orders'});
 Order.belongsTo(User);
 
 export default User;

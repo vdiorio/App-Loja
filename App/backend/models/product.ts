@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import db from '.';
 
 class Product extends Model {
@@ -30,11 +30,11 @@ Product.init({
   },
   description: {
     type: DataTypes.STRING,
-    defaultValue: 'Um produto maravilhoso!'
+    defaultValue: 'Um produto maravilhoso!',
   },
   imageURL: {
     type: DataTypes.STRING,
-    defaultValue: 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg'
+    defaultValue: 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg',
   },
   price: {
     type: DataTypes.NUMBER,
@@ -42,7 +42,7 @@ Product.init({
   },
   category: {
     type: DataTypes.STRING,
-    defaultValue: 'utensilhos'
+    defaultValue: 'utensilhos',
   },
   quantity: {
     type: DataTypes.NUMBER,
@@ -53,7 +53,7 @@ Product.init({
   modelName: 'Product',
   tableName: 'Products',
   timestamps: true,
-  underscored: true
+  underscored: true,
 });
 
 export default Product;
