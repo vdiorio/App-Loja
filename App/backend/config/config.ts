@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import 'dotenv/config';
 import {Options} from 'sequelize';
 
