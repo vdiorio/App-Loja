@@ -32,7 +32,10 @@ export default class ProductMiddlewares {
 
   static validateUpdateProduct = async (req: Request, res: Response, next: NextFunction) => {
     const {error} = editProductSchema.validate(req.body) as Joi.ValidationResult;
-    if (error) return res.status(StatusCodes.BAD_REQUEST).json(error.details[0].message);
+    if (error) {
+      const {message} = error.details[0];
+      return res.status(StatusCodes.BAD_REQUEST).json({message});
+    }
     next();
   };
 }

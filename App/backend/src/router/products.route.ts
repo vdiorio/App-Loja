@@ -6,11 +6,6 @@ import controllers from '../controllers';
 const productRouter = Router();
 
 productRouter.get(
-    '/category',
-    controllers.product.getByCategory,
-);
-
-productRouter.get(
     '/',
     controllers.product.getAll,
 );

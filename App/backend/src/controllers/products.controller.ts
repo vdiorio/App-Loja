@@ -23,16 +23,6 @@ export default class ProductsService {
     }
   };
 
-  static getByCategory = async (req: Request, res: Response) => {
-    try {
-      const {category} = req.body;
-      const products = await services.products.getByCategory(category);
-      return res.status(StatusCodes.OK).json(products);
-    } catch (e) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
-    }
-  };
-
   static createProduct = async (req: Request, res: Response) => {
     try {
       const newProduct = req.body;
@@ -47,8 +37,9 @@ export default class ProductsService {
     try {
       const newProduct = req.body;
       const {id} = req.params;
-      await services.products.updateProduct(id, newProduct);
-      return res.status(StatusCodes.OK).end();
+      const affectedRows = await services.products.updateProduct(id, newProduct);
+      if (!affectedRows) return res.status(StatusCodes.NOT_FOUND).json({message: 'Product not found'});
+      return res.status(StatusCodes.NO_CONTENT).end();
     } catch (e) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
     }
@@ -57,7 +48,8 @@ export default class ProductsService {
   static deleteProduct = async (req: Request, res: Response) => {
     try {
       const {id} = req.params;
-      await services.products.deleteProduct(id);
+      const affectedRows = await services.products.deleteProduct(id);
+      if (!affectedRows) return res.status(StatusCodes.NOT_FOUND).json({message: 'Product not found'});
       return res.status(StatusCodes.NO_CONTENT).end();
     } catch (e) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);

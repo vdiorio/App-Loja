@@ -13,11 +13,6 @@ export default class ProductsService {
     return product;
   };
 
-  static getByCategory = async (category: string) => {
-    const product = await Product.findAll({where: {category}}) as Product[];
-    return product;
-  };
-
   static updateQuantity = async (id: string, amount: number, replace: boolean = false) => {
     const product = await Product.findByPk(id) as Product;
     const quantity = replace ? amount : (product.quantity + amount);
@@ -27,7 +22,7 @@ export default class ProductsService {
   };
 
   static updateProduct = async (id: string, values: IProduct) => {
-    const product = await Product.update(values, {where: {id}});
+    const [product] = await Product.update(values, {where: {id}});
     return product;
   };
 
@@ -37,6 +32,7 @@ export default class ProductsService {
   };
 
   static deleteProduct = async (id: string) => {
-    await Product.destroy({where: {id}});
+    const affectedRows = await Product.destroy({where: {id}});
+    return affectedRows;
   };
 };
