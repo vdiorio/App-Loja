@@ -90,3 +90,165 @@ export const productsStub = [
     updatedAt: '2022-05-11T00:13:05.000Z',
   },
 ];
+
+export const getAllOrdersStub = [
+  {
+    id: 1,
+    userId: 2,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 2,
+    products: [
+      {
+        name: 'FACA GINSU 2000',
+        Order_Products: {
+          quantity: 454,
+          order_id: 1,
+          product_id: 1,
+        },
+      },
+      {
+        name: 'Iggy',
+        Order_Products: {
+          quantity: 83,
+          order_id: 1,
+          product_id: 4,
+        },
+      },
+    ],
+  },
+  {
+    id: 2,
+    userId: 3,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 3,
+    products: [
+      {
+        name: 'Leão da parmalat',
+        Order_Products: {
+          quantity: 272,
+          order_id: 2,
+          product_id: 2,
+        },
+      },
+      {
+        name: 'X-Infarto',
+        Order_Products: {
+          quantity: 278,
+          order_id: 2,
+          product_id: 3,
+        },
+      },
+      {
+        name: 'Wesley Salgadão',
+        Order_Products: {
+          quantity: 477,
+          order_id: 2,
+          product_id: 5,
+        },
+      },
+    ],
+  },
+  {
+    id: 3,
+    userId: 4,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 4,
+    products: [
+      {
+        name: 'FACA GINSU 2000',
+        Order_Products: {
+          quantity: 75,
+          order_id: 3,
+          product_id: 1,
+        },
+      },
+    ],
+  },
+  {
+    id: 4,
+    userId: 2,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 2,
+    products: [
+      {
+        name: 'FACA GINSU 2000',
+        Order_Products: {
+          quantity: 395,
+          order_id: 4,
+          product_id: 1,
+        },
+      },
+    ],
+  },
+  {
+    id: 5,
+    userId: 2,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 2,
+    products: [
+      {
+        name: 'X-Infarto',
+        Order_Products: {
+          quantity: 490,
+          order_id: 5,
+          product_id: 3,
+        },
+      },
+      {
+        name: 'Wesley Salgadão',
+        Order_Products: {
+          quantity: 44,
+          order_id: 5,
+          product_id: 5,
+        },
+      },
+    ],
+  },
+  {
+    id: 6,
+    userId: 3,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 3,
+    products: [
+      {
+        name: 'Leão da parmalat',
+        Order_Products: {
+          quantity: 422,
+          order_id: 6,
+          product_id: 2,
+        },
+      },
+    ],
+  },
+  {
+    id: 7,
+    userId: 2,
+    createdAt: '2022-05-12T04:37:48.000Z',
+    updatedAt: '2022-05-12T04:37:48.000Z',
+    UserId: 2,
+    products: [
+      {
+        name: 'FACA GINSU 2000',
+        Order_Products: {
+          quantity: 116,
+          order_id: 7,
+          product_id: 1,
+        },
+      },
+      {
+        name: 'Leão da parmalat',
+        Order_Products: {
+          quantity: 83,
+          order_id: 7,
+          product_id: 2,
+        },
+      },
+    ],
+  },
+];
