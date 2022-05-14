@@ -81,6 +81,18 @@ describe('A API deve checar a existência do usuário antes de tentar alterar se
     expect(response.body).to.have.property('message');
     expect(response.body.message).to.be.equal('Coins updated');
   });
+
+  it('Não deve ser possível deixar um usuário com moedas negativas', async () => {
+    sinon.stub(User, 'findByPk').resolves({coins: 50} as User);
+    const response = await chai.request(app)
+        .put('/users/1')
+        .set('authorization', 'token')
+        .send({coins: -100});
+    (User.findByPk as sinon.SinonStub).restore();
+    expect(response).to.have.status(StatusCodes.UNAUTHORIZED);
+    expect(response.body).to.have.property('message');
+    expect(response.body.message).to.be.equal('Invalid amount');
+  });
 });
 
 describe('A requisição deve estar no formato correto', () => {
