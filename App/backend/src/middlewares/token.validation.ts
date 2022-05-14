@@ -20,10 +20,7 @@ export default class TokenValidation {
     try {
       const {authorization} = req.headers;
       if (!authorization) return res.status(StatusCodes.UNAUTHORIZED).json({message: 'Token not found'});
-      const {role, id} = jwt.verify(authorization, process.env.JWT_SECRET as string) as jwt.JwtPayload;
-      if (role !== 'user' && role !== 'admin') {
-        return res.status(StatusCodes.UNAUTHORIZED).json({message: 'Unauthorized action'});
-      }
+      const {id} = jwt.verify(authorization, process.env.JWT_SECRET as string) as jwt.JwtPayload;
       req.headers.id = id;
       next();
     } catch (e) {

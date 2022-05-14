@@ -5,8 +5,7 @@ import IOrderProduct from '../interface/IOrderProduct';
 import {pivotInfo, IOrder} from '../interface/IOrder';
 import services from '.';
 
-function generateResponse(order: IOrder | null) {
-  if (!order) return null;
+function generateResponse(order: IOrder) {
   order.products = order.products.map((p: pivotInfo) => {
     const {product_id, quantity} = p.Order_Products;
     return {
@@ -24,17 +23,6 @@ function generateResponse(order: IOrder | null) {
 }
 
 export default class OrderService {
-  static getById = async (orderId: string) => {
-    const order = await Order.findByPk(orderId, {
-      include: [{
-        association: 'products',
-        attributes: ['name', 'description'],
-      }],
-    }) as unknown as IOrder;
-    const response = generateResponse(order);
-    return response;
-  };
-
   static getAll = async () => {
     const orders = await Order.findAll({
       include: [{
@@ -42,7 +30,8 @@ export default class OrderService {
         attributes: ['name'],
       }],
     });
-    return orders;
+    const response = orders.map((order) => generateResponse(order as unknown as IOrder));
+    return response;
   };
 
   static getByUserId = async (userId: string) => {

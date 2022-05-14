@@ -13,10 +13,9 @@ export default class ProductsService {
     return product;
   };
 
-  static updateQuantity = async (id: string, amount: number, replace: boolean = false) => {
+  static updateQuantity = async (id: string, amount: number) => {
     const product = await Product.findByPk(id) as Product;
-    const quantity = replace ? amount : (product.quantity + amount);
-    if (!product || quantity < 0) return -999;
+    const quantity = product.quantity + amount;
     product.update({quantity});
     return quantity;
   };
