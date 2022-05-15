@@ -7,7 +7,7 @@ const config: Options = {
   password: process.env.MYSQL_PASSWORD || '123456',
   database: process.env.DATABASE_NAME || 'lojaVoll',
   host: process.env.MYSQL_HOST || 'localhost',
-  port: Number(process.env.MYSQL_PORT) || 3002,
+  port: Number(process.env.MYSQL_PORT) || 3306,
   dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',
