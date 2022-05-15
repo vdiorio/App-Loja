@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  backend:
+    build: ./
+    container_name: app_backend
+    ports:
+      - 3001:3001
+    depends_on:
+      dbVoll:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - MYSQL_PORT=3306
+      - MYSQL_HOST=dbVoll
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"]
+      timeout: 10s
+      retries: 5
+  dbVoll:
+    image: mysql:8.0.21
+    container_name: dbVoll
+    expose:
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    restart: 'always'
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE
