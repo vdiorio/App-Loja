@@ -1,7 +1,7 @@
 setup:
 build:
   docker:
-    web: ./App/backend/Dockerfile
+    web: Dockerfile
 run:
   web: npm start
 # Configurações do HEROKU

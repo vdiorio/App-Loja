@@ -1,0 +1,46 @@
+.Header {
+  background: black;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 3vh;
+}
+
+input {
+  width: 40vw;
+  border-radius: 5vh;
+  height: 3vh;
+}
+
+.Logo {
+  width: 8vh;
+}
+
+.Search-container {
+  display: flex;
+  align-items: center;
+  margin: 1vw;
+  gap: 2vw;
+}
+
+.User-container {
+  display: flex;
+  align-items: center;
+  margin: 1vw;
+  gap: 1vw;
+}
+
+.Logo-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 1vw;
+  gap: 2vw;
+  margin-left: 4vw;
+}
+
+.Cart {
+  background-color: blueviolet;
+}
