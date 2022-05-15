@@ -1,4 +1,5 @@
 import bodyParser = require('body-parser');
+import {NextFunction, Request, Response} from 'express';
 import router from './router';
 
 const express = require('express');
@@ -7,6 +8,13 @@ require('dotenv').config();
 const {PORT} = process.env;
 
 app.use(bodyParser.json());
+app.use(function(_req: Request, res: Response, next: NextFunction) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.use('/login', router.login);
 app.use('/users', router.users);
 app.use('/products', router.products);
