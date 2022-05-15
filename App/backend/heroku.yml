@@ -4,3 +4,4 @@ build:
     web: ./App/backend/Dockerfile
 run:
   web: npm start
+# Configurações do HEROKU
