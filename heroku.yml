@@ -1,0 +1,9 @@
+setup: 
+  addons:
+  - plan: heroku-mysql
+    as: dbVoll
+build:
+  docker:
+    web: ./App/backend/Dockerfile
+run:
+  web: npm start
