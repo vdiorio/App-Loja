@@ -37,7 +37,7 @@ export default class OrderMiddlewares {
     const price = Number(req.headers.price);
     const {id} = req.headers;
     const {coins} = await services.users.getById(id as string);
-    if (coins - price < 0) return res.status(StatusCodes.UNAUTHORIZED).json({message: 'Not enough funds'});
+    if (Number(coins) - price < 0) return res.status(StatusCodes.UNAUTHORIZED).json({message: 'Not enough funds'});
     next();
   };
 }
