@@ -4,6 +4,14 @@
 Este aplicativo foi montado para a participação de um processo seletivo, existe a intenção de aprimorá-lo futuramente, e com essa atualização o read-me também será atualizado.
 
 * [Teste a aplicação aqui!](https://stately-custard-702fb3.netlify.app)
+   * Os usuários são:
+      - admin
+      - user1
+      - user2
+      - user3
+   * As senhas são:
+      - secret_nomeDoUsuário
+      - ex: secret_admin
 
 
 Este aplicativo tem como objetivo:
