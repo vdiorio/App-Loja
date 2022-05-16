@@ -18,9 +18,13 @@ export default class ProductsService {
         id: user.id,
         email: user.email,
         role: user.role,
+        name: user.name,
       };
       const token = jwt.sign(data, process.env.JWT_SECRET as string, jwtConfig);
-      return res.status(StatusCodes.OK).json({token});
+      return res.status(StatusCodes.OK).json({
+        ...data,
+        token,
+      });
     } catch (_e) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message: 'Algo deu errado, tente novamente mais tarde'});
     }

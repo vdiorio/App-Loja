@@ -8,7 +8,7 @@ module.exports = {
       description: 'A faca GINSU 2000 corta peixes, costela na vertical, cano de metal e tomates!',
       image_u_r_l: 'https://teleguiado.com/wp-content/uploads/2016/06/Sem-t%C3%ADtulo.png',
       price: 150,
-      category: 'utensilhos',
+      category: 'utensils',
       quantity: 2000,
       created_at: new Date(),
       updated_at: new Date(),

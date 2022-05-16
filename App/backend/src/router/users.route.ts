@@ -11,6 +11,12 @@ userRouter.get(
     controllers.user.getAll,
 );
 
+userRouter.get(
+    '/info',
+    middlewares.validation.user,
+    controllers.user.getById,
+);
+
 userRouter.post(
     '/create',
     middlewares.users.validateNewUser,

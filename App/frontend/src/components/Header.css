@@ -1,0 +1,92 @@
+.header {
+  background: black;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 3vh;
+}
+
+.footer {
+  background: rgb(34, 34, 34);
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 3vh;
+}
+
+.footer div {
+  position: absolute;
+  width: 100px;
+  right: 10px;
+}
+
+.footer div button {
+  color: red;
+}
+
+.search-input {
+  padding: 10px;
+  width: 30vw;
+  border-radius: 5vh;
+  height: 3vh;
+}
+
+.logo {
+  width: 8vh;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin: 1vw;
+  gap: 2vw;
+}
+
+.user-container, .coin-container {
+  display: flex;
+  align-items: center;
+  margin: 1vw;
+  gap: 1vw;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 1vw;
+  gap: 2vw;
+  margin-left: 4vw;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.price-input {
+  width: 70px;
+}
+
+button {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width:800px) {
+  .search-container {
+    display: none;
+  }
+
+  .user-container h3 {
+    display: none;
+  }
+
+  .coin-container {
+  }
+}

@@ -32,4 +32,14 @@ export default class UsersController {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message: 'Algo deu errado, tente novamente mais tarde'});
     }
   };
+
+  static getById = async (req: Request, res: Response) => {
+    try {
+      const {id} = req.headers;
+      const user = await services.users.getById(id as string);
+      return res.status(StatusCodes.OK).json(user);
+    } catch (e) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message: 'Algo deu errado, tente novamente mais tarde'});
+    }
+  };
 }

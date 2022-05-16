@@ -1,0 +1,44 @@
+.product-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.product-image {
+  width: 30%;
+}
+
+.product-form label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.product-form label input {
+  background-color: white;
+}
+
+textarea {
+  width: 75%;
+  height: 100px;
+}
+
+
+.shape1 {
+	height: 620px;
+	width: 620px;
+	background: #FFF;	
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 72px 0 0;
+}
+
+.product-form label select {
+  margin-right: 350px;
+}

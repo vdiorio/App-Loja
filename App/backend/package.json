@@ -4,7 +4,8 @@
   "description": "Aplicação de loja virtual com controle de acesso",
   "main": "./build/src/index.js",
   "scripts": {
-    "start": "npx tsc && npm run db:reset && node .",
+    "start": "npm run tsc && node .",
+    "tsc": "./node_modules/typescript/bin/tsc",
     "dev": "npx nodemon ./src/index.ts",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts' --exit",
     "test:coverage": "nyc npm test",
