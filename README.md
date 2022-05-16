@@ -9,15 +9,16 @@ Este aplicativo foi montado para a participação de um processo seletivo, exist
 Este aplicativo tem como objetivo:
 * Apresentar uma tela de login funcional
 * Listar produtos de uma loja, com opção de compra
-* Ter um usuário admnistrador capaz de alterar produtos e moedas de usuários
+* Ter um usuário administrador capaz de alterar produtos e moedas de usuários
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">voltar para o topo</a>)</p>
 
 
 
 ### Feito com
 
 * [React.js](https://reactjs.org/)
+* [Typescript](https://www.typescriptlang.org/)
 * [Node.js](https://nodejs.org/)
 * [Mocha.js](https://mochajs.org)
 * [Chai.js](https://www.chaijs.com)
@@ -27,7 +28,7 @@ Este aplicativo tem como objetivo:
 * [Docker](https://www.docker.com)
 * [MySQL](https://www.mysql.com)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">voltar para o topo</a>)</p>
 
 
 
@@ -45,7 +46,7 @@ Os próximos passos te ensinarão a montar a aplicação na sua máquina.
 
 ### Instalação
 
-1. Clone the repositório
+1. Clone o repositório
    ```sh
    git clone https://github.com/vdiorio/App-Loja
    ```
@@ -67,12 +68,12 @@ Os próximos passos te ensinarão a montar a aplicação na sua máquina.
    ```js
    cd /App/frontend && npm start
    ```
-5.3 Se quiser iniciar a  aplicação na forma de containers, utilize o comando a seguir
+5.3 Se quiser iniciar a aplicação na forma de containers, utilize o comando a seguir
    ```js
    npm run compose:up
    ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">voltar para o topo</a>)</p>
 
 
 <!-- CONTACT -->
@@ -82,7 +83,7 @@ Vitor Diorio - [@Samuraidoaxe](https://twitter.com/Samuraidoaxe) - [Linkedin](ht
 
 Project Link: [https://github.com/vdiorio/App-Loja](https://github.com/vdiorio/App-Loja)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">voltar para o topo</a>)</p>
 
 
 
@@ -100,4 +101,4 @@ Apenas alguns links que sempre me ajudam e que eu gosto de recomendar.
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">voltar para o topo</a>)</p>

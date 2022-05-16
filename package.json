@@ -1,0 +1,21 @@
+{
+  "name": "app-loja",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd App/frontend && npm install && cd .. && cd .. && cd App/backend && npm install",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vdiorio/App-Loja.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vdiorio/App-Loja/issues"
+  },
+  "homepage": "https://github.com/vdiorio/App-Loja#readme"
+}

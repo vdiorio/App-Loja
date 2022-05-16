@@ -1,25 +1,37 @@
 version: '3.9'
 services:
+  frontend:
+    build: ./App/frontend
+    container_name: app_frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]
+      timeout: 10s
+      retries: 5
   backend:
-    build: ./
+    build: ./App/backend
     container_name: app_backend
     ports:
       - 3001:3001
     depends_on:
-      dbVoll:
+      db:
         condition: service_healthy
     env_file:
-      - .env
+      - ./App/backend/.env
     environment:
       - MYSQL_PORT=3306
-      - MYSQL_HOST=dbVoll
+      - MYSQL_HOST=db
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
       retries: 5
-  dbVoll:
+  db:
     image: mysql:8.0.21
-    container_name: dbVoll
+    container_name: dbmysql
     expose:
       - 3306
     environment:
