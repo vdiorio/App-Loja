@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useState} from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './components/Login';
@@ -42,16 +42,18 @@ function App() {
   return (
     <BrowserRouter>
       <Header logged={logged} coins={coins} name={name} admin={isAdmin} />
-      <Route exact path="/">
-        <Home refresh={refreshHeader} />
-      </Route>
-      <Route exact path="/admin">
-        { isAdmin ? <Admin admin={isAdmin} refresh={refreshHeader} /> : <div>NOT FOUND</div> }
-      </Route>
-      <Route exact path="/login" >
-        <Login setLogged={setLogged} logged={logged} />
-      </Route>
-      <Route path="/product" component={ProductForm}/>
+      <Switch>
+        <Route exact path="/">
+          <Home refresh={refreshHeader} coins={coins} />
+        </Route>
+        <Route exact path="/admin">
+          { isAdmin ? <Admin admin={isAdmin} refresh={refreshHeader} /> : <div>NOT FOUND</div> }
+        </Route>
+        <Route exact path="/login" >
+          <Login setLogged={setLogged} logged={logged} />
+        </Route>
+        <Route path="/product" component={ProductForm}/>
+      </Switch>
       <Footer setLogged={setLogged} logged={logged} />
     </BrowserRouter>
   );

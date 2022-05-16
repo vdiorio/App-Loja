@@ -156,8 +156,6 @@ button {
   right: -30vw;
   top: 0;
   min-width: 300px;
-  animation-name: hide;
-  animation-duration: 0.5s;
   padding: 0;
   margin: 0;
 }
@@ -225,6 +223,12 @@ button {
   animation-duration: 0.5s;
 }
 
+.closed {
+  right: -30vw;
+  animation-name: hide;
+  animation-duration: 0.5s;
+}
+
 @keyframes show {
   from {right: -30vw;}
   to {right: 0;}
@@ -255,11 +259,8 @@ button {
 
 @media (max-width:800px) {
   .cart {
-    width: 80vw;
     right: -80vw;
     text-align: center;
-    animation: showMB;
-    animation-duration: 0.5s;
   }
 
   .fixed {
@@ -270,6 +271,12 @@ button {
   .open {
     right: 0;
     animation: hideMB;
+    animation-duration: 0.5s;
+  }
+
+  .closed {
+    right: -80vw;
+    animation: showMB;
     animation-duration: 0.5s;
   }
 

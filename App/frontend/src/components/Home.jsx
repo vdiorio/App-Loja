@@ -4,9 +4,9 @@ import ProductCard from './ProductCard';
 import './Home.css';
 import Cart from './Cart';
 
-function Home({refresh}) {
+function Home({refresh, coins}) {
   const [products, setProducts] = useState([]);
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState(JSON.parse(localStorage.getItem('shoppingCart'))|| []);
   const [sort, setSort] = useState('');
 
   const addProductToCart = (product) => {
@@ -20,6 +20,7 @@ function Home({refresh}) {
       }
       newCart[productIndex].cartQuantity++;
       setCartProducts(newCart);
+      localStorage.setItem('shoppingCart', JSON.stringify(newCart));
     }
   };
 
@@ -58,12 +59,15 @@ function Home({refresh}) {
       <Cart
         cartProducts={cartProducts}
         setCartProducts={setCartProducts}
-        refresh={refresh} />
+        coins={coins}
+        refresh={refresh}
+      />
     </div>
   );
 }
 
 Home.propTypes = {
+  coins: PropTypes.number,
   refresh: PropTypes.func,
 };
 
