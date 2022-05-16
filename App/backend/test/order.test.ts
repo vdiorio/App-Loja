@@ -164,11 +164,15 @@ describe('Teste de integridade da rota orders', () => {
     sinon.stub(services.orders, 'createOrder').rejects();
     sinon.stub(services.orders, 'getAll').rejects();
     sinon.stub(services.orders, 'getByUserId').rejects();
+    sinon.stub(services.products, 'getById').resolves({quantity: 1000} as Product);
+    sinon.stub(services.users, 'getById').resolves({coins: 9999} as User);
     sinon.stub(jwt, 'verify').returns({role: 'admin', id: 1} as unknown as void);
   });
   after(() => {
     (services.orders.createOrder as sinon.SinonStub).restore();
     (services.orders.getAll as sinon.SinonStub).restore();
+    (services.products.getById as sinon.SinonStub).restore();
+    (services.users.getById as sinon.SinonStub).restore();
     (services.orders.getByUserId as sinon.SinonStub).restore();
     (jwt.verify as sinon.SinonStub).restore();
   });

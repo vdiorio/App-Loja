@@ -233,4 +233,10 @@ describe('Caso algo de errado a requisição deve retornar um erro', () => {
     expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
     expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
   });
+
+  it('A rota GET /users/ deve retornar status 500', async () => {
+    const response = await chai.request(app).get('/users/').set('authorization', 'token').send({coins: 10});
+    expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
+  });
 });

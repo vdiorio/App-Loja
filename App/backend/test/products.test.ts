@@ -34,6 +34,18 @@ describe('Deve ser possível acessar e manipular produtos cadastrados no banco',
     quantity: 10,
   };
 
+  const createdProduct = {
+    id: 64,
+    name: 'Novo produto',
+    description: 'Descrição incrível!',
+    imageURL: 'image.url',
+    price: 1000,
+    category: 'food',
+    quantity: 10,
+    updatedAt: '2022-05-16T11:44:45.106Z',
+    createdAt: '2022-05-16T11:44:45.106Z',
+  };
+
   before(() => {
     sinon.stub(Product, 'findAll').resolves(productsStub as unknown as Product[]);
     sinon.stub(Product, 'findByPk').resolves(productsStub[0] as unknown as Product);
@@ -88,7 +100,9 @@ describe('Deve ser possível acessar e manipular produtos cadastrados no banco',
     });
 
     it('A rota deve criar produtos normalmente caso a requisição seja válida', async () => {
+      sinon.stub(Product, 'create').resolves(createdProduct as unknown as Model<any, any>);
       const response = await chai.request(app).post('/products').send(newProduct).set('authorization', 'token');
+      (Product.create as sinon.SinonStub).restore();
       expect(response).to.have.status(StatusCodes.CREATED);
       expect(response.body).to.have.property('name');
       expect(response.body).to.have.property('description');
@@ -101,9 +115,9 @@ describe('Deve ser possível acessar e manipular produtos cadastrados no banco',
 
   describe('Deve ser possível atualizar produtos através da rota PUT /products', () => {
     it('Se o produto não existir no banco, deve retornar o status 404', async () => {
-      sinon.stub(Product, 'create').resolves([0] as unknown as Model<any, any>);
+      sinon.stub(Product, 'update').resolves([0]);
       const response = await chai.request(app).put('/products/1000').set('authorization', 'token').send(newProduct);
-      (Product.create as sinon.SinonStub).restore();
+      (Product.update as sinon.SinonStub).restore();
       expect(response).to.have.status(StatusCodes.NOT_FOUND);
       expect(response.body).to.have.property('message');
       expect(response.body.message).to.be.equal('Product not found');
@@ -119,9 +133,9 @@ describe('Deve ser possível acessar e manipular produtos cadastrados no banco',
     });
 
     it('O produto deve ser atualizado normalmente', async () => {
-      sinon.stub(Product, 'create').resolves([1] as unknown as Model<any, any>);
+      sinon.stub(Product, 'update').resolves([1]);
       const response = await chai.request(app).put('/products/1').set('authorization', 'token').send(newProduct);
-      (Product.create as sinon.SinonStub).restore();
+      (Product.update as sinon.SinonStub).restore();
       expect(response).to.have.status(StatusCodes.NO_CONTENT);
       expect(response.body).to.be.deep.equal({});
     });
