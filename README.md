@@ -57,17 +57,17 @@ Os próximos passos te ensinarão a montar a aplicação na sua máquina.
    ```sh
    npm install
    ```
-4.0 Renomeie o arquivo .env.example para .env e coloque as informações que ele pede
+4 Renomeie o arquivo .env.example(localizado em App/backend) para .env e preencha com as variáveis de ambiente
 
-4.1 Para iniciar o backend navegue até a pasta /App/backend e rode o comando npm start
+5.1 Para iniciar o backend navegue até a pasta /App/backend e rode o comando npm start
    ```js
    cd /App/backend && npm start
    ```
-4.2 Para iniciar o frontend navegue até a pasta /App/frontend e rode o comando npm start
+5.2 Para iniciar o frontend navegue até a pasta /App/frontend e rode o comando npm start
    ```js
    cd /App/frontend && npm start
    ```
-4.3 Se quiser iniciar a  aplicação na forma de containers, utilize o comando a seguir
+5.3 Se quiser iniciar a  aplicação na forma de containers, utilize o comando a seguir
    ```js
    npm run compose:up
    ```
