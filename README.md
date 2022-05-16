@@ -19,6 +19,13 @@ Este aplicativo tem como objetivo:
 
 * [React.js](https://reactjs.org/)
 * [Node.js](https://nodejs.org/)
+* [Mocha.js](https://mochajs.org)
+* [Chai.js](https://www.chaijs.com)
+* [Sinon.js](https://sinonjs.org)
+* [Express.js](https://expressjs.com)
+* [Sequelize](https://sequelize.org)
+* [Docker](https://www.docker.com)
+* [MySQL](https://www.mysql.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
