@@ -9,7 +9,7 @@ export default class UserService {
   };
 
   static getById = async (id: string) => {
-    const user = await User.findByPk(id, {attributes: {exclude: ['id', 'password']}}) as User;
+    const user = await User.findByPk(id, {attributes: {exclude: ['password']}}) as User;
     return user;
   };
 
