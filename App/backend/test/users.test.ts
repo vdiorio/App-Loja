@@ -82,6 +82,25 @@ describe('A API deve checar a existência do usuário antes de tentar alterar se
     expect(response.body.message).to.be.equal('Coins updated');
   });
 
+  it('A rota /users deve retornar as informações do usuário de acordo com o id do token', async () => {
+    sinon.stub(User, 'findByPk').resolves({
+      id: 1,
+      name: 'Administrador',
+      email: 'admin@admin.com',
+      coins: 9999,
+      role: 'admin',
+    } as User);
+    const response = await chai.request(app)
+        .get('/users/info')
+        .set('authorization', 'token');
+    (User.findByPk as sinon.SinonStub).restore();
+    expect(response).to.have.status(StatusCodes.OK);
+    expect(response.body).to.have.property('id');
+    expect(response.body).to.have.property('name');
+    expect(response.body).to.have.property('email');
+    expect(response.body).to.have.property('role');
+  });
+
   it('Não deve ser possível deixar um usuário com moedas negativas', async () => {
     sinon.stub(User, 'findByPk').resolves({coins: 50} as User);
     const response = await chai.request(app)
@@ -199,6 +218,7 @@ describe('Caso algo de errado a requisição deve retornar um erro', () => {
   before(() => {
     sinon.stub(User, 'create').rejects();
     sinon.stub(User, 'findAll').rejects();
+    sinon.stub(User, 'findByPk').rejects();
     sinon.stub(User, 'update').rejects();
     sinon.stub(jwt, 'verify').returns({role: 'admin'} as unknown as void);
   });
@@ -206,6 +226,7 @@ describe('Caso algo de errado a requisição deve retornar um erro', () => {
   after(() => {
     (User.create as sinon.SinonStub).restore();
     (User.findAll as sinon.SinonStub).restore();
+    (User.findByPk as sinon.SinonStub).restore();
     (User.update as sinon.SinonStub).restore();
     (jwt.verify as sinon.SinonStub).restore();
   });
@@ -236,6 +257,12 @@ describe('Caso algo de errado a requisição deve retornar um erro', () => {
 
   it('A rota GET /users/ deve retornar status 500', async () => {
     const response = await chai.request(app).get('/users/').set('authorization', 'token').send({coins: 10});
+    expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
+  });
+
+  it('A rota GET /users/info deve retornar status 500', async () => {
+    const response = await chai.request(app).get('/users/info').set('authorization', 'token').send({coins: 10});
     expect(response).to.have.status(StatusCodes.INTERNAL_SERVER_ERROR);
     expect(response.body.message).to.be.equal('Algo deu errado, tente novamente mais tarde');
   });
