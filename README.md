@@ -79,6 +79,8 @@ Os próximos passos te ensinarão a montar a aplicação na sua máquina.
 5.3 Se quiser iniciar a aplicação na forma de containers, utilize o comando a seguir
    ```js
    npm run compose:up
+   // Pode ser desmontado com
+   npm run compose:down
    ```
 
 <p align="right">(<a href="#top">voltar para o topo</a>)</p>
