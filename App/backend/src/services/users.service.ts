@@ -4,7 +4,7 @@ import * as bcrypt from 'bcryptjs';
 
 export default class UserService {
   static getAll = async () => {
-    const users = await User.findAll({attributes: {exclude: ['id', 'password']}}) as User[];
+    const users = await User.findAll({attributes: {exclude: ['password']}}) as User[];
     return users;
   };
 
