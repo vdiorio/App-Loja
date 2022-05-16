@@ -1,25 +1,38 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Header.css';
-import { ImSearch, ImUser } from 'react-icons/im';
+import {ImCoinDollar, ImSearch, ImUser} from 'react-icons/im';
 import Logo from './Logo.png';
 
-function Header() {
+function Header({logged, coins, admin}) {
+  const adminLink = admin ? '/admin' : null;
   return (
-    <div className="Header">
-      <div className='Logo-container'>
-        <img className="Logo" src={Logo} alt="Logo da loja" />
+    <header className="header">
+      <a className='logo-container' href='/'>
+        <img className="logo" src={Logo} alt="Logo da loja" />
         <h1>Logo</h1>
+      </a>
+      <div className='search-container'>
+        <ImSearch className="icon" size="1.5em" />
+        <input className='search-input' placeholder="O que você está procurando?" />
       </div>
-      <div className='Search-container'>
-        <ImSearch className="Icon" size="1.5em" />
-        <input placeholder="O que você está procurando?" />
-      </div>
-      <div className='User-container'>
+      <a className='user-container' href={ logged ? adminLink : '/login' }>
         <ImUser size="1.5em" />
-        <h3>Login</h3>
+        <h3>{logged ? localStorage.getItem('name') : 'Login'}</h3>
+      </a>
+      <div className='coin-container'>
+        <ImCoinDollar size="1.5em" />
+        <h3>{coins}</h3>
       </div>
-      <div />
-    </div>
+    </header>
   );
 }
+
+Header.propTypes = {
+  coins: PropTypes.number,
+  logged: PropTypes.bool,
+  admin: PropTypes.bool,
+  name: PropTypes.string,
+};
 
 export default Header;
