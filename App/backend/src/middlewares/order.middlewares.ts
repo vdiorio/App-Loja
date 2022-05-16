@@ -27,7 +27,7 @@ export default class OrderMiddlewares {
       if (product.quantity - p.quantity < 0) {
         return res.status(StatusCodes.UNAUTHORIZED).json({message: 'No products enough in stock'});
       }
-      totalPrice += product.price;
+      totalPrice += product.price * Number(products.quantity);
     }
     req.headers.price = totalPrice.toString();
     next();
