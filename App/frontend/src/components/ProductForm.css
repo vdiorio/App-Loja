@@ -42,3 +42,15 @@ textarea {
 .product-form label select {
   margin-right: 350px;
 }
+
+.screen-form {		
+	background: linear-gradient(90deg, #1c1931, #363542);		
+	position: relative;	
+	height: 600px;
+	width: 360px;	
+	box-shadow: 0px 0px 24px #121020;
+}
+
+h1 {
+  text-align: center;
+}

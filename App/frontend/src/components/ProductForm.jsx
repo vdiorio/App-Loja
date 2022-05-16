@@ -31,7 +31,7 @@ function ProductForm() {
 
   return (
     <div className="container">
-      <div className="screen">
+      <div className="screen-form">
         <div className="screen__content">
           <div className='product-form'>
             <label htmlFor='name'>
