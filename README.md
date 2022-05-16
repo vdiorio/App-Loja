@@ -53,7 +53,7 @@ Os próximos passos te ensinarão a montar a aplicação na sua máquina.
    ```sh
    cd App-Loja
    ```
-3. Install NPM packages
+3. Instale os pacotes NPM
    ```sh
    npm install
    ```
