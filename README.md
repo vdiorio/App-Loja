@@ -5,13 +5,15 @@ Este aplicativo foi montado para a participação de um processo seletivo, exist
 
 * [Teste a aplicação aqui!](https://stately-custard-702fb3.netlify.app)
    * Os usuários são:
-      - admin
-      - user1
-      - user2
-      - user3
+      - admin@admin.com
+      - user1@user.com
+      - user2@user.com
+      - user3@user.com
    * As senhas são:
-      - secret_nomeDoUsuário
-      - ex: secret_admin
+      - secret_admin
+      - secret_user1
+      - secret_user2
+      - secret_user3
 
 
 Este aplicativo tem como objetivo:
